@@ -1,0 +1,19 @@
+{
+  "name": "root-chatbot-webhook",
+  "version": "1.0.0",
+  "description": "Root Webhook template for creating a Chat Bot using Dialogue Flow and the Root API. ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard O'Brien",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemon": "^1.15.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
