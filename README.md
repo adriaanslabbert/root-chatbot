@@ -47,7 +47,7 @@ Request Object:
 }
 ```
 
-## Simple DialogFlow Component
+## Creating a Simple DialogFlow Component
 
 Follow the below steps in order to create a simple DialogFlow component and link it to our root-chatbot-webhook:
 
@@ -110,6 +110,36 @@ We now simply need to indicate that we would like our configured intent to use a
 <p align="center">
   <img src="https://user-images.githubusercontent.com/4396174/36353754-ac7bb1dc-14d2-11e8-9115-aae6024761f2.png" width="1000"/>
 </p>
+
+## Testing the Simple DialogFlow Component
+
+It is now time to test our Chat Bot. Dialog Flow provides a nifty tool to test your Chat Bot while it is being created. You can find the Chat Bot on the right of your DialogFlow console. 
+
+## 1. Launch our Chat Bot
+
+In order to launch our Chat Bot, we use the 'Default Welcome Intent' which we configured earlier. Hopefully you provided a useful response that will immediately promt the user to provide information about what they are looking for. i.e A response that will lead the user to request for an insurance quote for their device.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/4396174/36353755-b023e2b4-14d2-11e8-8931-275e313f9590.png" width="350"/>
+</p>
+
+NB: The response in our chat bot above is not intuitive at all and does not prompt the user for information in a conversational manner. 
+
+## 2. Ask your chat bot for an Insurance Quote
+
+Now we can start to interact with our Chat Bot by sending it messages that our Chat Bot expects. These message structures are configured in our QuoteIntent above. 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/4396174/36353756-b1e778f4-14d2-11e8-8f6c-3c03d02e12ca.png" width="350"/>
+</p>
+
+If configured correctly, this should lead to our webhook being used and a calll to the Root API being made in the background. As you can see above, our webhook provided a conversational reply with the details of the monthly premium to our Chat Bot (and thus to our user). 
+
+NB: If this call fails, a few things may be wrong:
+
+* Your Chat Bot does not understand the user's message
+* The device provided to the Chat Bot is not available in the Root API (However we should see a friendly webhook response)
+* Our webhook is not running or has not been configured correctly (Be sure to check your webhook console or logs). 
 
 ## Powered By:
 
