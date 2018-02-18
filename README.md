@@ -2,7 +2,7 @@
 
 Root Webhook template for creating a Chat Bot using DialogFlow and the Root API.
 
-The full Root api documentation can be found 
+The full Root api documentation can be found [here](https://app.root.co.za/docs/insurance/api)
 
 This is not an official Root project. 
 
