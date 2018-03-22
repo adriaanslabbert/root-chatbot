@@ -12,24 +12,33 @@ class Api {
     this.apiServer.use(cors);
     this.apiServer.use(bodyParser.json());
 
-    this.apiServer.post("/getQuote", (req, res) => {
+    this.apiServer.post("/getTermQuote", (req, res) => {
       if (!req.body.result || !req.body.result.parameters) {
       }
       const {
         driverAge,
+        driverGender,
+        driverEducation,
         accidentCount,
         distance,
         vehicleType
       } = req.body.result.parameters;
 
       console.log(
-        `driverAge=${driverAge},accidentCount=${accidentCount},distance=${distance},vehicleType=${vehicleType}`
+        `driverAge=${driverAge},driverGender=${driverGender},driverEducation=${driverEducation},accidentCount=${accidentCount},distance=${distance},vehicleType=${vehicleType}`
       );
 
       this.controller
-        .getQuote(driverAge, accidentCount, distance, vehicleType)
-        .then(success => {
-          res.end();
+        .getQuote(
+          driverAge,
+          driverGender,
+          driverEducation,
+          accidentCount,
+          distance,
+          vehicleType
+        )
+        .then(result => {
+          res.json(result);
         })
         .catch(err => {
           if (err) console.log(err);

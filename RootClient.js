@@ -10,6 +10,7 @@ class RootClient {
     this.client = new Client(rootOptions);
   }
 
+  // get a quote for term life insurance
   getQuote(params) {
     const args = {
       data: {
@@ -40,7 +41,7 @@ class RootClient {
       headers: HEADERS
     };
     return new Promise((resolve, reject) => {
-      this.client.post(ROOT_URL, args, (data, response) =>
+      this.client.post(ROOT_URL + "/quotes", args, (data, response) =>
         handleResponse(data, response, resolve, reject)
       );
     });
@@ -58,39 +59,6 @@ class RootClient {
     //   },
     //   json: true
   }
-
-  // request(options, function(error, response, body) {
-  //   if (error) {
-  //     res.send(error);
-  //   }
-
-  //   //Extract quotes from response
-  //   let comprehensive_insurance_quote = body[0];
-  //   let theft_insurance_quote = body[1];
-
-  //   if (comprehensive_insurance_quote === undefined) {
-  //     //Send error result back to DialogFlow if device not found
-  //     var errorMessage =
-  //       "I cannot seem to find any information on file for your device. I will give you a call shortly to resolve this";
-  //     return res.json({
-  //       speech: errorMessage,
-  //       displayText: errorMessage,
-  //       source: "get-insurance-quote"
-  //     });
-  //   }
-
-  //   //Send comprehenisive insurance amount back to DialogFlow (Using suggested_premium value)
-  //   var responseMessage =
-  //     "Comprehensive insurance of your device will cost R" +
-  //     comprehensive_insurance_quote.suggested_premium / 100.0 +
-  //     " per month";
-  //   return res.json({
-  //     speech: responseMessage,
-  //     displayText: responseMessage,
-  //     source: "get-insurance-quote"
-  //   });
-  // });
-  // }
 }
 
 function handleResponse(data, response, resolve, reject) {

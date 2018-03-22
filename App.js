@@ -7,11 +7,11 @@ const OltioClient = require("./RootClient.js");
 class App {
   constructor(env) {
     const rootClient = new RootClient(env.rootCredentials);
-    const controller = new Controller(env.siteUrl, rootClient);
+    const controller = new Controller(rootClient);
     const api = new Api(controller);
 
     this.api = express();
-    this.api.use("/edt", edt.server());
+    this.api.use("/insurance", api.server());
   }
 
   server() {

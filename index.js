@@ -11,12 +11,3 @@ const app = new App(projectEnv);
 const server = express();
 server.use("/api", app.server());
 exports.server = functions.https.onRequest(server);
-
-//REST Endpoint for getting a root_term insurance quote
-server.post("/get-insurance-term-quote", function(req, res) {
-  //Extract the parameters from the request object
-
-  if (device != null) {
-    let reqUrl = encodeURI(ROOT_API_ENDPOINT + "/quotes");
-  }
-});

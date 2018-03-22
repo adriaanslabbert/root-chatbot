@@ -1,8 +1,8 @@
 {
   "testLocal": {
     "apiUrl": "https://localhost:16384/api",
-    "root": {
-      "orgApiKey":
+    "rootCredentials": {
+      "user":
         "sandbox_YTA0YmVmYjAtNWUwMC00MzY5LWE4ZjQtOTdiYzgxMGYyYTdhLnBsRFVQWTBGNEphTHFsVF9BZ3lqNkR3UlVBbDJXUWE0"
     }
   }

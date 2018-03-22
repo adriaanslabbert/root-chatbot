@@ -17,7 +17,6 @@
     "body-parser": "^1.18.2",
     "nodemon": "^1.15.0",
     "npm": "^5.7.1",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "node-rest-client": "^3.1.0"
   }
 }
