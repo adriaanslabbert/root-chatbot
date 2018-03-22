@@ -1,4 +1,3 @@
-const uuid = require("uuid/v4");
 // Decimal library is required to ensure correct handling of numbers (Javascript doesn't do so well with floating point)
 const Decimal = require("decimal");
 const authState = require("./auth-state-constants.json");
