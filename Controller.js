@@ -46,34 +46,6 @@ class Controller {
 
     coverPeriod = "1_year";
 
-    //   //Extract quotes from response
-    //   let comprehensive_insurance_quote = body[0];
-    //   let theft_insurance_quote = body[1];
-
-    //   if (comprehensive_insurance_quote === undefined) {
-    //     //Send error result back to DialogFlow if device not found
-    //     var errorMessage =
-    //       "I cannot seem to find any information on file for your device. I will give you a call shortly to resolve this";
-    //     return res.json({
-    //       speech: errorMessage,
-    //       displayText: errorMessage,
-    //       source: "get-insurance-quote"
-    //     });
-    //   }
-
-    //   //Send comprehenisive insurance amount back to DialogFlow (Using suggested_premium value)
-    //   var responseMessage =
-    //     "Comprehensive insurance of your device will cost R" +
-    //     comprehensive_insurance_quote.suggested_premium / 100.0 +
-    //     " per month";
-    //   return res.json({
-    //     speech: responseMessage,
-    //     displayText: responseMessage,
-    //     source: "get-insurance-quote"
-    //   });
-    // });
-    // }
-
     const params = {
       cover_amount: coverAmount,
       cover_period: coverPeriod,
@@ -83,9 +55,48 @@ class Controller {
       gender: driverGender,
       age: driverAge
     };
-    return this.rootClient
-      .getQuote(params)
-      .then(() => Promise.resolve({ sessionId: sessionId, redirect: "/home" }));
+    return this.rootClient.getQuote(params).then(response => {
+      // quote_package_id
+      // uuid. ID of quote package retrieved in quote generation.
+      // name
+      // integer. The package name.
+      // sum_assured
+      // integer. Amount, in cents, that is the maximum insured value.
+      // base_premium
+      // integer. Premium amount, in cents, that includes the risk and platform fee. monthly_premium should be calculated from this.
+      // suggested_premium
+      // integer. Premium amount, in cents, that is suggested to be used as the monthly_premium.
+      //Extract quotes from response
+
+      let comprehensiveQuote = body[0];
+      //   let limitedQuote = body[1];
+
+      if (comprehensiveQuote === undefined) {
+        //Send human-friendly error result back to DialogFlow
+        var errorMessage =
+          "An internal error occurred. Please contact your local sales representative.";
+        return Promise.resolve({
+          speech: errorMessage,
+          displayText: errorMessage,
+          source: "getTermQuote"
+        });
+      }
+      var context = this.context();
+      context.set("quoteId", comprehensiveQuote.quote_package_id);
+      console.log(`Quote ID = ${comprehensiveQuote.quote_package_id}`);
+
+      //Send comprehensive insurance amount back to DialogFlow (Using suggested_premium value)
+      var responseMessage = `Comprehensive insurance will cost R${Decimal(
+        comprehensiveQuote.suggested_premium
+      )
+        .div(100)
+        .toString()} per month`;
+      return Promise.resolve({
+        speech: responseMessage,
+        displayText: responseMessage,
+        source: "getTermQuote"
+      });
+    });
   }
 }
 

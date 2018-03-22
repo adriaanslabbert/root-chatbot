@@ -44,19 +44,6 @@ class RootClient {
         handleResponse(data, response, resolve, reject)
       );
     });
-
-    // const options = {
-    //   method: "POST",
-    //   headers: {
-    //     username: CLIENT_ID,
-    //     password: CLIENT_SECRET,
-    //     authorization: AUTH_TOKEN
-    //   },
-    //   uri: reqUrl,
-    //   form: {
-
-    //   },
-    //   json: true
   }
 }
 
