@@ -2,7 +2,7 @@ const express = require("express");
 
 const Api = require("./Api");
 const Controller = require("./Controller");
-const OltioClient = require("./RootClient.js");
+const RootClient = require("./RootClient");
 
 class App {
   constructor(env) {

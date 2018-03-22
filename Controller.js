@@ -1,6 +1,5 @@
 // Decimal library is required to ensure correct handling of numbers (Javascript doesn't do so well with floating point)
 const Decimal = require("decimal");
-const authState = require("./auth-state-constants.json");
 
 class Controller {
   constructor(rootClient) {
@@ -72,7 +71,7 @@ class Controller {
       //   let limitedQuote = body[1];
 
       if (comprehensiveQuote === undefined) {
-        //Send human-friendly error result back to DialogFlow
+        //Send error result back to DialogFlow
         var errorMessage =
           "An internal error occurred. Please contact your local sales representative.";
         return Promise.resolve({

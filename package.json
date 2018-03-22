@@ -1,8 +1,7 @@
 {
   "name": "root-chatbot-webhook",
   "version": "1.0.1",
-  "description":
-    "Root Webhook for Chat Bot using Dialogue Flow and the Root API. ",
+  "description": "Root Webhook for Chat Bot using Dialogue Flow and the Root API. ",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
