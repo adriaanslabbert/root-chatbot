@@ -27,11 +27,7 @@ class Controller {
 
     if (driverEducation === "tertiary") {
       educationStatus = "undergraduate_degree";
-      if (vehicleType === "SUV" || vehicleType === "luxury") {
-        incomePerMonth = 6000000;
-      } else if (vehicleType === "economy") {
-        incomePerMonth = 4000000;
-      } else incomePerMonth = 3000000;
+      incomePerMonth = 6000000;
     } else if (driverEducation === "matric") {
       educationStatus = "grade_12_matric";
       incomePerMonth = 2500000;
@@ -40,7 +36,14 @@ class Controller {
       incomePerMonth = 1500000;
     }
 
-    coverAmount = 500000000;
+    if (vehicleType === "luxury") {
+      coverAmount = 500000000;
+    } else if (vehicleType === "economy") {
+      coverAmount = 400000000;
+    } else {
+      coverAmount = 100000000;
+    }
+
     coverPeriod = "1_year";
 
     //   //Extract quotes from response

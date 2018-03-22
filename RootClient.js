@@ -1,7 +1,6 @@
 // We do manual promisification because node-rest-client callback functions
 //  don't follow the "(err, response)" pattern.
 const Client = require("node-rest-client").Client;
-//const request = require("request-promise"); //To make HTTP calls to the Root API
 const ROOT_URL = "https://sandbox.root.co.za/v1/insurance";
 const HEADERS = { "Content-Type": "application/json" };
 
